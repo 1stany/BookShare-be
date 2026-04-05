@@ -1,11 +1,9 @@
 package org.projectwork.bookshare.model.services.implementations;
 
 import org.projectwork.bookshare.exceptions.EntityNotFoundException;
-import org.projectwork.bookshare.model.AppUser;
 import org.projectwork.bookshare.model.Category;
 import org.projectwork.bookshare.model.City;
 import org.projectwork.bookshare.model.Item;
-import org.projectwork.bookshare.model.repositories.abstractions.AppUserRepository;
 import org.projectwork.bookshare.model.repositories.abstractions.CategoryRepository;
 import org.projectwork.bookshare.model.repositories.abstractions.CityRepository;
 import org.projectwork.bookshare.model.repositories.abstractions.ItemRepository;
