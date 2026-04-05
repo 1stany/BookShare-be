@@ -18,6 +18,9 @@ public class ItemDto {
     private String categoryName;
     private String creationDate;
     private String ownerCityName;
+    private String ownerLockerpoint;
+    private Double ownerLatitude;
+    private Double ownerLongitude;
     private String ownerName;
     private String ownerEmail;
     private String cover;
@@ -35,6 +38,9 @@ public class ItemDto {
         this.categoryName = item.getCategory().getName();
         this.creationDate = item.getCreationDate().format(DateTimeFormatter.ofPattern("d-MMM-uuuu"));
         this.ownerCityName = item.getOwner().getCity().getName();
+        this.ownerLockerpoint = item.getOwner().getCity().getLockerpoint();
+        this.ownerLatitude = item.getOwner().getCity().getLatitude();
+        this.ownerLongitude = item.getOwner().getCity().getLongitude();
         this.ownerName = item.getOwner().getFullName();
         this.ownerEmail = item.getOwner().getEmail();
         this.cover = item.getCover();
@@ -88,8 +94,9 @@ public class ItemDto {
         this.ownerName = ownerName;
     }
 
-    public Item toItem(Category category, AppUser owner){
-        return new Item(this.id, this.name, this.condition, this.description, this.conditionComment, this.activetrade, category, LocalDate.parse(this.creationDate, DateTimeFormatter.ofPattern("uuuu-MM-dd")), owner);
+    public Item toItem(Category category, AppUser owner) {
+        return new Item(this.id, this.name, this.condition, this.description, this.conditionComment, this.activetrade,
+                category, LocalDate.parse(this.creationDate, DateTimeFormatter.ofPattern("uuuu-MM-dd")), owner);
     }
 
     public long getId() {
@@ -130,6 +137,30 @@ public class ItemDto {
 
     public void setOwnerCityName(String ownerCityName) {
         this.ownerCityName = ownerCityName;
+    }
+
+    public String getOwnerLockerpoint() {
+        return ownerLockerpoint;
+    }
+
+    public void setOwnerLockerpoint(String ownerLockerpoint) {
+        this.ownerLockerpoint = ownerLockerpoint;
+    }
+
+    public Double getOwnerLatitude() {
+        return ownerLatitude;
+    }
+
+    public void setOwnerLatitude(Double ownerLatitude) {
+        this.ownerLatitude = ownerLatitude;
+    }
+
+    public Double getOwnerLongitude() {
+        return ownerLongitude;
+    }
+
+    public void setOwnerLongitude(Double ownerLongitude) {
+        this.ownerLongitude = ownerLongitude;
     }
 
     public String getCover() {
