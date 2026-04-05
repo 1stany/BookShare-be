@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.projectwork</groupId>
-	<artifactId>reshare</artifactId>
+	<artifactId>bookshare</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>reshare</name>
 	<description>Project work Generation</description>
