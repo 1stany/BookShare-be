@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -23,7 +24,8 @@ public class SecurityConfig {
     private SecurityProperties securityProperties;
 
     @Autowired
-    public SecurityConfig(UserDetailsService userDetailsService, JwtFilter jwtFilter, SecurityProperties securityProperties) {
+    public SecurityConfig(UserDetailsService userDetailsService, JwtFilter jwtFilter,
+            SecurityProperties securityProperties) {
         this.userDetailsService = userDetailsService;
         this.jwtFilter = jwtFilter;
         this.securityProperties = securityProperties;
@@ -31,10 +33,15 @@ public class SecurityConfig {
 
     @Bean
     public AuthenticationProvider authProvider() {
-        DaoAuthenticationProvider provider=new DaoAuthenticationProvider();
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService);
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
         return provider;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
     }
 
     @Bean

@@ -8,6 +8,7 @@ import org.projectwork.bookshare.model.repositories.abstractions.CityRepository;
 import org.projectwork.bookshare.model.services.abstractions.AppUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -16,7 +17,8 @@ import java.util.Optional;
 public class AppUserServiceImp implements AppUserService {
     private AppUserRepository appUserRepo;
     private CityRepository cityRepo;
-    private BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+    @Autowired
+    private PasswordEncoder encoder;
 
     @Autowired
     public AppUserServiceImp(AppUserRepository appUserRepo, CityRepository cityRepo) {

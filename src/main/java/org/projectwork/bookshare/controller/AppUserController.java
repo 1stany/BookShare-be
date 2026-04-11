@@ -44,7 +44,7 @@ public class AppUserController {
         AppUser user = registerUser.toAppUser(city);
         AppUser savedUser = appUserService.saveUser(user);
         AppUserDto userDto = new AppUserDto(savedUser);
-        return new RegisterDto(userDto, user.getPassword());
+        return new RegisterDto(userDto, null);
     }
 
     @PostMapping("/login")
